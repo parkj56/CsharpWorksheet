@@ -17,7 +17,7 @@ namespace DatabaseFirstLINQ
         {
             //ProblemOne();
             //ProblemTwo();
-            ProblemThree();
+            //ProblemThree();
             //ProblemFour();
             //ProblemFive();
             //ProblemSix();
