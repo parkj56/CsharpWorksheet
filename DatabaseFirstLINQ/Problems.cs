@@ -153,40 +153,17 @@ namespace DatabaseFirstLINQ
         }
        
         private void ProblemEight()
-<<<<<<< HEAD
         // Write a LINQ query that retreives all of the products in the shopping cart of the user who has the email "afton@gmail.com".
         // Then print the product's name, price, and quantity to the console.
 
         {
-=======
-            // Write a LINQ query that retreives all of the products in the shopping cart of the user who has the email "afton@gmail.com".
-            // Then print the product's name, price, and quantity to the console.
-        {
             var userProducts = _context.ShoppingCarts
                                        .Include(ur => ur.User)
                                        .Where(ue => ue.User.Email == "afton@gmail.com")
                                        .Include(pn => pn.Product);
-            foreach (var product in userProducts)
-            {
-                Console.WriteLine($"product Name: {product.Product.Name} Price: {product.Product.Price} Quantity: {product.Quantity}");
-            }
-
-<<<<<<< HEAD
-=======
-            // Write a LINQ query that retreives all of the products in the shopping cart of the user who has the email "afton@gmail.com".
-            // Then print the product's name, price, and quantity to the console.
-            
->>>>>>> efc430212676bc49e159d561745188310247cb5d
-            var userProducts = _context.ShoppingCarts
-                                       .Include(ur => ur.User)
-                                       .Where(ue => ue.User.Email == "afton@gmail.com")
-                                       .Include(pn => pn.Product);
-<<<<<<< HEAD
-=======
->>>>>>> fe26e0b92c3c76a6d96852d5f5fae2fea20735ad
 
 
->>>>>>> efc430212676bc49e159d561745188310247cb5d
+
             foreach (var product in userProducts)
             {
                 Console.WriteLine($"product Name: {product.Product.Name} Price: {product.Product.Price} Quantity: {product.Quantity}");
@@ -216,8 +193,17 @@ namespace DatabaseFirstLINQ
             // Write a LINQ query that retreives all of the products in the shopping cart of users who have the role of "Employee".
             // Then print the user's email as well as the product's name, price, and quantity to the console.
 
-        }
+            var customerUsers = _context.UserRoles
+                .Include(ur => ur .UserRoles)
+                .Where(ur => ur.RolesName == "Employee")
+                .Include(pn => pn.Product);
 
+            foreach (UserRole userRole in customerUsers)
+            {
+                Console.WriteLine($"Email: {userRole.User.Email} Role: {userRole.Role.RoleName}");
+
+            }
+        }
         // <><><><><><><><> CUD (Create, Update, Delete) Actions <><><><><><><><><>
 
         // <><> C Actions (Create) <><>
