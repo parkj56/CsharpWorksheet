@@ -161,16 +161,6 @@ namespace DatabaseFirstLINQ
                 Console.WriteLine($"product Name: {product.Product.Name} Price: {product.Product.Price} Quantity: {product.Quantity}");
             }
 
-<<<<<<< HEAD
-=======
-            // Write a LINQ query that retreives all of the products in the shopping cart of the user who has the email "afton@gmail.com".
-            // Then print the product's name, price, and quantity to the console.
-            
-            var userProducts = _context.ShoppingCarts
-                                       .Include(ur => ur.User)
-                                       .Where(ue => ue.User.Email == "afton@gmail.com")
-                                       .Include(pn => pn.Product);
->>>>>>> fe26e0b92c3c76a6d96852d5f5fae2fea20735ad
 
 
             foreach (var product in userProducts)
@@ -199,9 +189,21 @@ namespace DatabaseFirstLINQ
 
         private void ProblemTen()
         {
-            // Write a LINQ query that retreives all of the products in the shopping cart of users who have the role of "Employee".
-            // Then print the user's email as well as the product's name, price, and quantity to the console.
+            //    // Write a LINQ query that retreives all of the products in the shopping cart of users who have the role of "Employee".
+            //    // Then print the user's email as well as the product's name, price, and quantity to the console
+            //    var userProducts = _context.ShoppingCarts;
+            //    var userRole = _context.UserRoles
 
+            //        .Include(ur => ur.User)
+            //        .Where(ur => ur.Role.RoleName == "Employee");
+            //    //.Where(pd => pd.Product)
+            //    //.Include(pr => pr.UserProducts);
+
+            //    foreach (var product in userProducts)
+            //    {
+            //        Console.WriteLine($"Email: {userRole.User.Email} Product Name:{product.Product.Name} Price: {product.Product.Price} Quantity: {userProducts.Quantity}");
+
+            //    }
         }
 
         // <><><><><><><><> CUD (Create, Update, Delete) Actions <><><><><><><><><>
@@ -223,7 +225,14 @@ namespace DatabaseFirstLINQ
         private void ProblemTwelve()
         {
             // Create a new Product object and add that product to the Products table using LINQ.
-
+            Product newProduct = new Product()
+            {
+                Name = "Samsung Z Fold 3",
+                Description = "Samsung Z Fold 3 Cell Phone",
+                Price = (1800)
+            };
+            _context.Products.Add(newProduct);
+            _context.SaveChanges();
         }
 
         private void ProblemThirteen()
