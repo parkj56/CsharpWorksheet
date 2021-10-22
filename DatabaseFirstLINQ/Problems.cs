@@ -22,7 +22,11 @@ namespace DatabaseFirstLINQ
             //ProblemFive();
             //ProblemSix();
             //ProblemSeven();
+<<<<<<< HEAD
+            /*ProblemEight()*/;
+=======
             //ProblemEight();
+>>>>>>> efc430212676bc49e159d561745188310247cb5d
             //ProblemNine();
             //ProblemTen();
             //ProblemEleven();
@@ -147,8 +151,14 @@ namespace DatabaseFirstLINQ
                 Console.WriteLine($"Email: {userRole.User.Email} Role: {userRole.Role.RoleName}");
             }
         }
-
+       
         private void ProblemEight()
+<<<<<<< HEAD
+        // Write a LINQ query that retreives all of the products in the shopping cart of the user who has the email "afton@gmail.com".
+        // Then print the product's name, price, and quantity to the console.
+
+        {
+=======
             // Write a LINQ query that retreives all of the products in the shopping cart of the user who has the email "afton@gmail.com".
             // Then print the product's name, price, and quantity to the console.
         {
@@ -161,8 +171,25 @@ namespace DatabaseFirstLINQ
                 Console.WriteLine($"product Name: {product.Product.Name} Price: {product.Product.Price} Quantity: {product.Quantity}");
             }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+            // Write a LINQ query that retreives all of the products in the shopping cart of the user who has the email "afton@gmail.com".
+            // Then print the product's name, price, and quantity to the console.
+            
+>>>>>>> efc430212676bc49e159d561745188310247cb5d
+            var userProducts = _context.ShoppingCarts
+                                       .Include(ur => ur.User)
+                                       .Where(ue => ue.User.Email == "afton@gmail.com")
+                                       .Include(pn => pn.Product);
+<<<<<<< HEAD
+=======
+>>>>>>> fe26e0b92c3c76a6d96852d5f5fae2fea20735ad
+>>>>>>> de87a8d11e9f1133290fc5e16d7a9d05529b2a3e
 
 
+>>>>>>> efc430212676bc49e159d561745188310247cb5d
             foreach (var product in userProducts)
             {
                 Console.WriteLine($"product Name: {product.Product.Name} Price: {product.Product.Price} Quantity: {product.Quantity}");
