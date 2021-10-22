@@ -22,7 +22,11 @@ namespace DatabaseFirstLINQ
             //ProblemFive();
             //ProblemSix();
             //ProblemSeven();
+<<<<<<< HEAD
             /*ProblemEight()*/;
+=======
+            //ProblemEight();
+>>>>>>> efc430212676bc49e159d561745188310247cb5d
             //ProblemNine();
             //ProblemTen();
             //ProblemEleven();
@@ -149,9 +153,14 @@ namespace DatabaseFirstLINQ
         }
        
         private void ProblemEight()
+<<<<<<< HEAD
         // Write a LINQ query that retreives all of the products in the shopping cart of the user who has the email "afton@gmail.com".
         // Then print the product's name, price, and quantity to the console.
 
+        {
+=======
+            // Write a LINQ query that retreives all of the products in the shopping cart of the user who has the email "afton@gmail.com".
+            // Then print the product's name, price, and quantity to the console.
         {
             var userProducts = _context.ShoppingCarts
                                        .Include(ur => ur.User)
@@ -161,13 +170,44 @@ namespace DatabaseFirstLINQ
             {
                 Console.WriteLine($"product Name: {product.Product.Name} Price: {product.Product.Price} Quantity: {product.Quantity}");
             }
+
+<<<<<<< HEAD
+=======
+            // Write a LINQ query that retreives all of the products in the shopping cart of the user who has the email "afton@gmail.com".
+            // Then print the product's name, price, and quantity to the console.
+            
+>>>>>>> efc430212676bc49e159d561745188310247cb5d
+            var userProducts = _context.ShoppingCarts
+                                       .Include(ur => ur.User)
+                                       .Where(ue => ue.User.Email == "afton@gmail.com")
+                                       .Include(pn => pn.Product);
+<<<<<<< HEAD
+=======
+>>>>>>> fe26e0b92c3c76a6d96852d5f5fae2fea20735ad
+
+
+>>>>>>> efc430212676bc49e159d561745188310247cb5d
+            foreach (var product in userProducts)
+            {
+                Console.WriteLine($"product Name: {product.Product.Name} Price: {product.Product.Price} Quantity: {product.Quantity}");
+            }
         }
 
         private void ProblemNine()
-        {
             // Write a LINQ query that retreives all of the products in the shopping cart of the user who has the email "oda@gmail.com" and returns the sum of all of the products prices.
             // HINT: End of query will be: .Select(sc => sc.Product.Price).Sum();
             // Then print the total of the shopping cart to the console.
+        {
+            var totalPrice = _context.ShoppingCarts
+                           .Include(ur => ur.User)
+                           .Where(ue => ue.User.Email == "oda@gmail.com")
+                           .Include(pn => pn.Product)
+                           .Select(sc => sc.Product.Price).Sum();
+            {
+                Console.WriteLine($"Total Price: {totalPrice}");
+            }
+
+
 
         }
 
