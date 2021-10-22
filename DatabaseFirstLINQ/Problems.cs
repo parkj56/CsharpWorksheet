@@ -161,7 +161,22 @@ namespace DatabaseFirstLINQ
                 Console.WriteLine($"product Name: {product.Product.Name} Price: {product.Product.Price} Quantity: {product.Quantity}");
             }
 
+<<<<<<< HEAD
+=======
+            // Write a LINQ query that retreives all of the products in the shopping cart of the user who has the email "afton@gmail.com".
+            // Then print the product's name, price, and quantity to the console.
+            
+            var userProducts = _context.ShoppingCarts
+                                       .Include(ur => ur.User)
+                                       .Where(ue => ue.User.Email == "afton@gmail.com")
+                                       .Include(pn => pn.Product);
+>>>>>>> fe26e0b92c3c76a6d96852d5f5fae2fea20735ad
 
+
+            foreach (var product in userProducts)
+            {
+                Console.WriteLine($"product Name: {product.Product.Name} Price: {product.Product.Price} Quantity: {product.Quantity}");
+            }
         }
 
         private void ProblemNine()
