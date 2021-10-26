@@ -22,17 +22,13 @@ namespace DatabaseFirstLINQ
             //ProblemFive();
             //ProblemSix();
             //ProblemSeven();
-<<<<<<< HEAD
-            /*ProblemEight()*/;
-=======
             //ProblemEight();
->>>>>>> efc430212676bc49e159d561745188310247cb5d
             //ProblemNine();
             //ProblemTen();
             //ProblemEleven();
             //ProblemTwelve();
             //ProblemThirteen();
-            //ProblemFourteen();
+            ProblemFourteen();
             //ProblemFifteen();
             //ProblemSixteen();
             //ProblemSeventeen();
@@ -155,13 +151,11 @@ namespace DatabaseFirstLINQ
         private void ProblemEight()
         // Write a LINQ query that retreives all of the products in the shopping cart of the user who has the email "afton@gmail.com".
         // Then print the product's name, price, and quantity to the console.
-
-        {
+        {     
             var userProducts = _context.ShoppingCarts
                                        .Include(ur => ur.User)
                                        .Where(ue => ue.User.Email == "afton@gmail.com")
                                        .Include(pn => pn.Product);
-
 
 
             foreach (var product in userProducts)
@@ -190,20 +184,24 @@ namespace DatabaseFirstLINQ
 
         private void ProblemTen()
         {
-            // Write a LINQ query that retreives all of the products in the shopping cart of users who have the role of "Employee".
-            // Then print the user's email as well as the product's name, price, and quantity to the console.
+            //    // Write a LINQ query that retreives all of the products in the shopping cart of users who have the role of "Employee".
+            //    // Then print the user's email as well as the product's name, price, and quantity to the console
+            //    var userProducts = _context.ShoppingCarts;
+            //    var userRole = _context.UserRoles
 
-            var customerUsers = _context.UserRoles
-                .Include(ur => ur .UserRoles)
-                .Where(ur => ur.RolesName == "Employee")
-                .Include(pn => pn.Product);
+            //        .Include(ur => ur.User)
+            //        .Where(ur => ur.Role.RoleName == "Employee");
+            //    //.Where(pd => pd.Product)
+            //    //.Include(pr => pr.UserProducts);
 
-            foreach (UserRole userRole in customerUsers)
-            {
-                Console.WriteLine($"Email: {userRole.User.Email} Role: {userRole.Role.RoleName}");
+            //    foreach (var product in userProducts)
+            //    {
+            //        Console.WriteLine($"Email: {userRole.User.Email} Product Name:{product.Product.Name} Price: {product.Product.Price} Quantity: {userProducts.Quantity}");
 
-            }
+            //    }
         }
+
+    
         // <><><><><><><><> CUD (Create, Update, Delete) Actions <><><><><><><><><>
 
         // <><> C Actions (Create) <><>
@@ -223,7 +221,14 @@ namespace DatabaseFirstLINQ
         private void ProblemTwelve()
         {
             // Create a new Product object and add that product to the Products table using LINQ.
-
+            Product newProduct = new Product()
+            {
+                Name = "Samsung Z Fold 3",
+                Description = "Samsung Z Fold 3 Cell Phone",
+                Price = (1800)
+            };
+            _context.Products.Add(newProduct);
+            _context.SaveChanges();
         }
 
         private void ProblemThirteen()
@@ -243,6 +248,15 @@ namespace DatabaseFirstLINQ
         private void ProblemFourteen()
         {
             // Add the product you create to the user we created in the ShoppingCart junction table using LINQ.
+            var userCart = _context.ShoppingCarts.Where(u => u.UserId == (6)).Select(p => p.ProductId).SingleOrDefault();
+            ShoppingCart newShoppingCart = new ShoppingCart()
+                {
+                   UserId = userCart,
+                   ProductId= 8
+                    
+                };
+        _context.ShoppingCarts.Add(newShoppingCart);
+        _context.SaveChanges();
 
         }
 
